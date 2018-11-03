@@ -1,0 +1,120 @@
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+
+    <div class="form-group">
+
+    </div>
+
+    <ul class="nav menu">
+        <li class="parent">
+            <a href="#">
+                <span class="glyphicon glyphicon-list">
+
+                </span> 用户模块 <span data-toggle="collapse" href="#sub-user-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+            </a>
+            <ul class="children collapse" id="sub-user-1">
+                <li class="parent">
+                    <a class="" href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span> 管理员管理
+                        <span data-toggle="collapse" href="#sub-user-2" style="margin-right: 14px" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-user-2">
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 添加管理员
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 商品管理员
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a class="" href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span> 用户管理
+                        <span data-toggle="collapse" href="#sub-user-3" style="margin-right: 14px" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-user-3">
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 添加用户
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 用户列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li class="parent">
+            <a href="#">
+                <span class="glyphicon glyphicon-list"></span> 商品模块 <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+            </a>
+            <ul class="children collapse" id="sub-item-1">
+                <li class="parent">
+                    <a class="" href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span> 商品管理
+                        <span data-toggle="collapse" href="#sub-item-2" style="margin-right: 14px" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-2">
+                        <li>
+                            <a class="" href="{:url('admin/goods/add')}">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 添加商品
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{:url('admin/goods/lists')}">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 商品列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a class="" href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span> 商品分类管理
+                        <span data-toggle="collapse" href="#sub-item-3" style="margin-right: 14px" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-3">
+                        <li>
+                            <a class="" href="{:url('admin/goodstype/add')}">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 添加商品分类
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{:url('admin/goodstype/lists')}">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 商品分类列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a class="" href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span> 竞拍管理
+                        <span data-toggle="collapse" href="#sub-item-4" style="margin-right: 14px" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-4">
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 添加商品竞拍
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#">
+                                <span style="text-indent: 2em" class="glyphicon glyphicon-share-alt"></span> 商品竞拍列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li><a href="{:url('admin/login/login')}"><span class="glyphicon glyphicon-user"></span> 登录页面</a></li>
+    </ul>
+</div>

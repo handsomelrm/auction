@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加商品</title>
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/datepicker3.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/styles.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<!--头部-->
+{include file='common/top'}
+<!--头部-->
+
+<!--侧边栏-->
+{include file='common/left'}
+<!--侧边栏-->
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active">添加商品</li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">添加商品</h1>
+        </div>
+    </div><!--/.row-->
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">添加商品</div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+
+                        <label>商品名称</label>
+                        <div class="form-group">
+                            <input class="form-control" id="g_name" type="text" name="g_name" required>
+                        </div>
+                        <br>
+                        <label>商品描述</label>
+                        <div class="form-group">
+                            <textarea name="g_content" id="g_content" class="form-control" required></textarea>
+                        </div>
+                        <br>
+                        <label>商品拍卖价格</label>
+                        <div class="form-group">
+                            <input class="form-control" id="g_price" name="g_price" type="text" required>
+                        </div>
+                        <br>
+                        <label>商品最低拍卖价格</label>
+                        <div class="form-group">
+                            <input class="form-control" id="g_low_price" name="g_low_price" type="text" required>
+                        </div>
+                        <br>
+                        <label>商品图片</label>
+                        <div class="form-group">
+                            <input class="form-control" id="g_img" name="g_img" type="file">
+                        </div>
+                        <br>
+                        <label>用户自定义标签</label>
+                        <div class="form-group">
+                            <input class="form-control" id="g_title" name="g_title" type="text" required>
+                        </div>
+                        <br>
+                        <label>商品分类</label>
+                        <div class="form-group">
+                            <select class="form-control" id="gt_id" name="gt_id">
+                                <option>请选择商品分类</option>
+                                {volist name='goods_type' id='value'}
+                                <option value="{$value.gt_id}">{$value.gt_name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                        <br>
+
+                        <label>是否为拍卖商品</label>
+                        <div class="form-group">
+                           否 <input type="radio" name="g_status" checked value="0">
+                            是 <input type="radio" name="g_status" value="3">
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <button onclick="submitForm()" class="btn btn-primary">添加</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col-->
+    </div><!-- /.row -->
+
+</div><!--/.main-->
+
+<script src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/js/chart.min.js"></script>
+<script src="__PUBLIC__/js/chart-data.js"></script>
+<script src="__PUBLIC__/js/easypiechart.js"></script>
+<script src="__PUBLIC__/js/easypiechart-data.js"></script>
+<script src="__PUBLIC__/js/bootstrap-datepicker.js"></script>
+<script>
+    !function ($) {
+        $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+            $(this).find('em:first').toggleClass("glyphicon-minus");
+        });
+        $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+    }(window.jQuery);
+
+    $(window).on('resize', function () {
+        if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+    })
+    $(window).on('resize', function () {
+        if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+    })
+</script>
+</body>
+<!--ajax提交表单-->
+<script type="text/javascript">
+    function submitForm() {
+        var formData = new FormData();//必须是new FormData后台才能接收到
+        //文本
+        formData.append("g_name", $("#g_name").val());
+        formData.append("g_content", $("#g_content").val());
+        formData.append("g_price", $("#g_price").val());
+        formData.append("g_low_price", $("#g_low_price").val());
+        formData.append("g_title", $("#g_title").val());
+        formData.append("gt_id", $("#gt_id").val());
+        //文件
+        formData.append("g_img", $("#g_img")[0].files[0]);
+        $.ajax({
+            url: "{:url('admin/goods/add')}",
+            data: formData,
+            type: 'post',
+            datatype: "json",
+            contentType: false,//必须false才会自动加上正确的Content-Type
+            processData: false,//必须false才会避开jQuery对 formdata 的默认处理，XMLHttpRequest会对 formdata 进行正确的处理
+            success: function (result) {
+                // alert(result);
+                if (result === "500") {
+                    alert(111);
+                } else if (result === 'success') {
+                    alert('添加成功');
+                }
+            }
+        });
+    }
+</script>
+</html>
